@@ -1,0 +1,12 @@
+person_picks_object
+person_places_object
+person_carries_object
+person_transfers_object_to_person
+person_interacts_with_phone
+person_interacts_with_laptop
+person_talks_to_person
+person_talks_on_phone
+person_purchases_from_cashier
+person_sits_down
+person_stands_up
+person_walks
