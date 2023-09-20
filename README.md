@@ -47,12 +47,12 @@ The framework is executed by simply running the main.py script.
 
 ```
 cd <project root directory>
-python3 main.py video_name --homography (optional) --action-recognizer (options=stgcn|2sagcn) (default=2sagcn)
+python main.py video_name --homography (optional) --action-recognizer (options=stgcn|2sagcn) (default=2sagcn)
 ```
 
 An example command is as follows:
 ```
-python3 main.py VIRAT_S_010208_03_000201_000232.mp4
+python main.py VIRAT_S_010208_03_000201_000232.mp4
 ```
 
 

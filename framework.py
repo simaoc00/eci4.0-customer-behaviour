@@ -105,4 +105,4 @@ def run(video_name, frame_list, fps, width, height, object_detector, tracker, po
     video_writer.release()
     data.to_excel(target_data_path)
     tracking.plot_homography(video_name, paths, colors)
-    print("files stored in the \"results\" folder!\n")
+    print("\n\nfiles stored in the \"results\" folder!\n")

@@ -10,6 +10,7 @@ from dataclasses import dataclass
 import torch
 from mmpose.apis import init_pose_model
 from mmaction.apis import init_recognizer
+
 sys.path.append(os.path.abspath("libs/byte_track/yolox/tracker"))
 from byte_tracker import BYTETracker
 
@@ -54,13 +55,14 @@ def main():
         mot20: bool = False
     tracker = BYTETracker(BYTETrackerArgs(), fps)
     # create pose estimation model instance (HRNet)
+    device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
     pose_config = "libs/mmpose/configs/hrnet_w32_coco_384x288.py"
     pose_checkpoint = "libs/mmpose/weights/hrnet_w32_coco_384x288.pth"
-    pose_model = init_pose_model(pose_config, pose_checkpoint)
+    pose_model = init_pose_model(pose_config, pose_checkpoint, device)
     # create action recognizer instance (ST-GCN|2s-AGCN|PoseC3D)
     recognizer_config = f"libs/mmaction/configs/{args.action_recognizer}_pip12_keypoint.py"
     recognizer_checkpoint = f"libs/mmaction/weights/{args.action_recognizer}_pip12_keypoint.pth"
-    recognizer = init_recognizer(recognizer_config, recognizer_checkpoint)
+    recognizer = init_recognizer(recognizer_config, recognizer_checkpoint, device)
     # run framework
     run(video_name, frame_list, fps, width, height, object_detector, tracker, pose_model, recognizer)
 
