@@ -38,7 +38,7 @@ latter were chosen to demonstrate the pose-related data (since the action recogn
 
 With this in mind, you must first install all the necessary requirements using the following command:
 
-```shell-session
+```bash
 cd <project root directory>
 pip install -r requirements.txt
 ```
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 (IMPORTANT) Note that in the [requirements.txt](requirements.txt) file, there are two commented lines corresponding to the CPU version of PyTorch. If you don't have a CUDA-enabled GPU, 
 you need to uncomment these lines and comment the CUDA versions instead:
 
-```ruby
+```py
 -f https://download.pytorch.org/whl/torch_stable.html
 # torch==1.11.0+cu113
 torch==1.11.0+cpu
@@ -57,14 +57,14 @@ torchvision==0.12.0+cpu
 
 Once the requirements have been installed, the framework can then be executed by running the main.py script.
 
-```shell-session
+```bash
 cd <project root directory>
 python main.py video_name --homography (optional) --action-recognizer (options=stgcn|2sagcn) (default=2sagcn)
 ```
 
 An example command is as follows:
 
-```shell-session
+```bash
 python main.py VIRAT_S_010208_03_000201_000232.mp4
 ```
 
