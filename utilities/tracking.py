@@ -106,7 +106,7 @@ def plot_homography(video_name, tracklets, colors):
     f.set_figheight(2)
     for track_id, tracklet in tracklets.items():
         plt.scatter(np.array(tracklet)[:, 0], np.array(tracklet)[:, 1], s=1, color=colors[int(track_id) % len(colors)])
-    plt.savefig(f"results/{video_name}_homography.png")
+    plt.savefig(f"results/{video_name.split('.')[0]}_homography.png")
 
 
 def get_frame_velocity(vx, vy):

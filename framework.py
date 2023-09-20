@@ -17,8 +17,8 @@ colors = [cmap(c)[:3] for c in np.linspace(0, 1, 20)]
 
 
 def run(video_name, homography, frame_list, fps, width, height, object_detector, tracker, pose_model, recognizer):
-    target_video_path = f"results/{video_name}.mp4"
-    target_data_path = f"results/{video_name}.xlsx"
+    target_video_path = f"results/{video_name}"
+    target_data_path = f"results/{video_name.split('.')[0]}.xlsx"
 
     print("\nextracting data from the video...")
     prog_bar = mmcv.ProgressBar(len(frame_list))
@@ -103,4 +103,4 @@ def run(video_name, homography, frame_list, fps, width, height, object_detector,
     data.to_excel(target_data_path)
     if homography is not None:
         tracking.plot_homography(video_name, paths, colors)
-    print("\n\nfiles stored in the \"results\" folder!\n")
+    print("\n\nfiles stored in the results folder!\n")
