@@ -32,7 +32,7 @@ consecutively, generate more reliable path information, a smoothing method was a
 ## Usage
 
 So that users can experiment with the project, we provided some videos in the [demos](demos/videos) folder. These are divided into two sections: 
-[occlusion_aware_detection_and_tracking](demos/videos/action_recognition) and [action_recognition](demos/videos/action_recognition) - where the videos in the
+[occlusion_aware_detection_and_tracking](demos/videos/occlusion_aware_detection_and_tracking) and [action_recognition](demos/videos/action_recognition) - where the videos in the
 former were chosen to demonstrate the trajectory-related data (including the occlusion-aware mechanism and trajectory smoothing method), and the videos in the
 latter were chosen to demonstrate the pose-related data (since the action recognition models were trained to recognise the actions depicted in them).
 
