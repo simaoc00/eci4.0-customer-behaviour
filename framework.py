@@ -16,10 +16,9 @@ cmap = plt.get_cmap("tab20")
 colors = [cmap(c)[:3] for c in np.linspace(0, 1, 20)]
 
 
-def run(video_name, frame_list, fps, width, height, object_detector, tracker, pose_model, recognizer):
+def run(video_name, homography, frame_list, fps, width, height, object_detector, tracker, pose_model, recognizer):
     target_video_path = f"results/{video_name}.mp4"
     target_data_path = f"results/{video_name}.xlsx"
-    scene_name = video_name.split('_')[2][0:4]
 
     print("\nextracting data from the video...")
     prog_bar = mmcv.ProgressBar(len(frame_list))
@@ -66,8 +65,6 @@ def run(video_name, frame_list, fps, width, height, object_detector, tracker, po
 
     print("\n\ngenerating output files...")
     prog_bar = mmcv.ProgressBar(len(frame_list))
-    with open(f"demos/homography/VIRAT_{scene_name}_homography_img2world.txt", 'r') as f:
-        homography_matrix = np.array([[float(num) for num in line.split(',')] for line in f])
     video_writer = video.get_video_writer(fps, width, height, target_video_path)
     for frame_id, frame in enumerate(frame_list):
         for track_id in set(data.loc[data["frame_id"] == frame_id]["track_id"]):
@@ -82,7 +79,7 @@ def run(video_name, frame_list, fps, width, height, object_detector, tracker, po
                 x_coordinate = (original_tracklet[0] * weight) + (reversed_tracklet[0] * (1 - weight))
                 y_coordinate = (original_tracklet[1] * weight) + (reversed_tracklet[1] * (1 - weight))
                 frame_tracklet = [x_coordinate, y_coordinate]
-                world_tracklet = tracking.convert_img2world(frame_tracklet, homography_matrix)
+                world_tracklet = tracking.convert_img2world(frame_tracklet, homography)
                 i = dataframe.get_index(data, frame_id, track_id)
                 data.at[i, "frame_tracklet"] = frame_tracklet
                 data.at[i, "world_tracklet"] = world_tracklet
@@ -104,5 +101,6 @@ def run(video_name, frame_list, fps, width, height, object_detector, tracker, po
         prog_bar.update()
     video_writer.release()
     data.to_excel(target_data_path)
-    tracking.plot_homography(video_name, paths, colors)
+    if homography is not None:
+        tracking.plot_homography(video_name, paths, colors)
     print("\n\nfiles stored in the \"results\" folder!\n")

@@ -92,6 +92,8 @@ def get_coordinate_weight(data, frame_id, track_id, smoothing_window):
 
 
 def convert_img2world(img_point, homography_matrix):
+    if homography_matrix is None:
+        return None
     result = np.matmul(homography_matrix, np.array([img_point[0], img_point[1], 1]))
     scale = [result[2]]
     return list(result / scale)
