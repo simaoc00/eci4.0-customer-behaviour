@@ -17,7 +17,7 @@ addition to the trajectory data, skeleton sequences regarding the pose of each t
 actions being performed. Furthermore, groups are identified by analysing factors such as the distance between people and the scale of their bounding boxes.
 
 <p align="center">
-    <img src="https://github.com/simaoc00/eci4.0-customer-behaviour/assets/58070852/74c8ad87-6c37-44c0-8c4d-33659ad3fc0d" alt="default" width="85%"/>
+    <img src="https://github.com/simaoc00/eci4.0-customer-behaviour/assets/58070852/a7ba6e54-7def-4106-861f-5c7898ca8b5b" alt="default" width="85%"/>
 </p>
 
 When certain obstacles are present in the scene, for instance cars, lampposts, trees, and bushes (in a street scene) or items, shelves, and banners (in a retail 
