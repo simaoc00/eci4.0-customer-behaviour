@@ -55,7 +55,7 @@ torch==1.11.0+cpu
 torchvision==0.12.0+cpu
 ```
 
-Once the requirements have been installed, the framework can then be executed by running the main.py script.
+Once the requirements have been installed, the framework can then be executed by running the [main.py](main.py) script.
 
 ```
 cd <project root directory>
