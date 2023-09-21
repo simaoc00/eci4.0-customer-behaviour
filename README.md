@@ -59,7 +59,7 @@ Once the requirements have been installed, the framework can then be executed by
 
 ```
 cd <project root directory>
-python main.py video_name --homography (optional) --action-recognizer (options=stgcn|2sagcn) (default=2sagcn)
+python main.py video_name --homography (optional) --action-recognizer (default=2sagcn)
 ```
 
 An example command is as follows:
