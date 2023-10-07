@@ -45,7 +45,7 @@ def main():
     fps = int(video_capture.get(cv2.CAP_PROP_FPS))
     video_capture.release()
     # extract homography matrix
-    homography_path = args.homography or (f"demos/homography/VIRAT_{video_name.split('_')[2][0:4]}_homography_img2world.txt" if re.match(r'^VIRAT_S_\d{6}_\d{2}_\d{6}_\d{6}$', video_name) else None)
+    homography_path = args.homography or (f"demos/homography/VIRAT_{video_name.split('_')[2][0:4]}_homography_img2world.txt" if re.match(r'^VIRAT_S_\d{6}_\d{2}_\d{6}_\d{6}(.*)$', video_name) else None)
     homography = None
     if homography_path:
         with open(homography_path, 'r') as f:
